@@ -11,7 +11,7 @@ namespace StorageServiceLibrary
         #region Fields
 
         private IIdGenerator idGenerator;
-        private IList<T> container;
+        private ICollection<T> container;
         private IEqualityComparer<T> comparer;
         private IdComparer idComparer;
 
@@ -24,9 +24,11 @@ namespace StorageServiceLibrary
             idGenerator = GetDefaultIdGenerator();
             container = new List<T>();
             idComparer = new IdComparer();
+
+         
         }
 
-        public StorageService(IIdGenerator idGenerator, IList<T> container, IEqualityComparer<T> comparer) : base()
+        public StorageService(IIdGenerator idGenerator, ICollection<T> container, IEqualityComparer<T> comparer) : base()
         {
             if (idGenerator == null) throw new ArgumentNullException(nameof(idGenerator));
             if (container == null) throw new ArgumentNullException(nameof(container));
