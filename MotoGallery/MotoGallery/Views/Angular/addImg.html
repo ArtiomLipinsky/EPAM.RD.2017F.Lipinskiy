@@ -1,0 +1,60 @@
+﻿
+<div class="row">
+    <div class="col-lg-offset-1 col-md-offset-1 col-md-offset-1">
+        <h3>Add Image</h3>
+    </div>
+</div>
+
+<div class="row">
+
+    <form class="form-horizontal col-lg-4 col-md-6 col-sm-12">
+        <div class="control-group">
+            <label class="control-label">Name</label>
+            <div class="controls">
+                <input type="text" ng-model="imageToAdd.fileName">
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label">Description</label>
+            <div class="controls">
+                <textarea style="resize:none" cols="22" rows="4" ng-model="imageToAdd.description"></textarea>
+            </div>
+        </div>
+
+        <div class="control-group">
+            <label class="control-label">File</label>
+            <div class="controls">
+                <input type="file" id="imageToAdd" ng-model="imageToAdd.data" fileread="imageToAdd.data">
+            </div>
+        </div>
+
+        <div class="control-group">
+            <label class="control-label">Album</label>
+            <div class="controls">
+                <input type="text" ng-model="imageToAdd.albumName">
+            </div>
+        </div>
+
+        <div class="control-group">
+            <p></p>
+            <div class="controls">
+                <input type="button" value="Add" class="btn" ng-click="addImg()" />
+            </div>
+        </div>
+    </form>
+
+    <div class="row col-lg-8 col-md-6 col-sm-12" ng-show="imageToAdd.data">
+        <div class="col-lg-10 col-md-10 col-sm-10">
+            <h4>{{imageToAdd.fileName}}</h4>
+        </div>
+        <div class="col-lg-2 col-md-2 col-sm-2">
+            <h5><span date-now="MM/dd/yyyy"></span></h5>
+        </div>
+        <img ng-src="{{imageToAdd.data}}" class="img-responsive">
+        <div class="container  text-center col-lg-12 col-md-12 col-sm-12">
+            <h3>{{imageToAdd.description}}</h3>
+        </div>
+    </div>
+
+
+</div>

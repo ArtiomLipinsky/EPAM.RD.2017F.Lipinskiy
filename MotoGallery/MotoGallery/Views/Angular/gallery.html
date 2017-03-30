@@ -1,0 +1,70 @@
+﻿
+
+<div class="row">
+    <div class="col-lg-offset-1 col-md-offset-1 col-md-offset-1">
+        <h3>Gallery</h3>
+    </div>
+</div>
+
+
+<div class="row">
+
+    <div class="container col-md-3">
+        <select ng-change="changeAlbum()"
+                ng-model="currentAlbum"
+                ng-options="album.Name for album in albums"
+                class="form-control input-group"></select>
+    </div>
+
+    <div class="container col-md-9">
+        <label ng-repeat="extension in currentAlbum.Extensions" class="checkbox-inline">
+            <input class="text-center" type="checkbox" ng-model="currentExtensions[extension]" /> {{extension}}
+        </label>
+    </div>
+
+</div>
+
+<div class="row jumbotron">
+    <ul class="thumbnails">
+        <li class="span4">
+            <div ng-repeat="image in currentAlbum.Images | filter:filterExtension" class="thumbnail col-lg-4 col-md-6 col-sm-12">
+                <div class="container bg-success">
+                    <h4 class="text-left">{{image.Name}}</h4>
+                    <h5 class="text-right">{{image.Date}}</h5>
+                </div>
+                <img ng-src="{{image.Url}}" class="img-responsive" data-toggle="modal" data-target="#img{{image.Id}}Modal" />
+                <div class="container col-lg-12 bg-info">
+                    <p></p>
+                    {{image.Description}}
+                    <p></p>
+                </div>
+                <div id="img{{image.Id}}Modal" class="modal" tabindex="-1">
+
+                    <div class="modal-dialog modal-lg">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button class="close" type="button" data-dismiss="modal">×</button>
+                                <div class="container bg-success">
+                                    <h4 class="text-left">{{image.Name}}</h4>
+                                    <h5 class="text-right">{{image.Date}}</h5>
+                                </div>
+                            </div>
+                            <div class="modal-body">
+                                <img ng-src="{{image.Url}}" class="img-responsive" data-dismiss="modal" />
+                            </div>
+                            <div class="modal-footer">
+                                <div class="container col-lg-12 bg-info">
+                                    <h3>{{image.Description}}</h3>  
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button ng-click="remove(image.Id)" class="btn btn-xs btn-block btn-sm">Delete</button>
+            </div>
+        </li>
+    </ul>
+
+</div>
+
+<script src="~/Scripts/modal.js"></script>

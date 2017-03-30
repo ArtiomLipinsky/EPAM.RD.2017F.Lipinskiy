@@ -1,0 +1,16 @@
+﻿<div>
+    <h2>About</h2>
+    <p ng-show="!isEdit">
+        {{text}}
+    </p>
+    <div class="row">
+        <textarea style="resize:none" cols="150" rows="5" ng-show="isEdit" ng-model="text"></textarea>
+
+        <div class="row container col-lg-offset-0">
+
+            <input ng-show="!isEdit" type="button" class="btn-lg btn-default" value="Edit" ng-click="goEdit()" />
+            <input ng-show="isEdit" type="button" value="Apply" class="btn-lg btn-success" ng-click="applyEdit()" />
+        </div>
+    </div>
+
+</div>
